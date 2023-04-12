@@ -1,8 +1,8 @@
 import { getData } from "@/utils/getAIResponse";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { Hearts } from "react-loader-spinner";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -11,7 +11,6 @@ export default function Home() {
     queryKey: ["AIarticle"],
     mutationFn: (searchText) => getData(searchText),
     onSuccess: () => {
-      // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["AIarticle"] });
     },
   });
@@ -59,7 +58,23 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="my-5"> {isLoading ? "loading..." : AIArticle}</div>
+          <div className="my-5">
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <Hearts
+                  height="80"
+                  width="80"
+                  color="#a82ec9"
+                  ariaLabel="hearts-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              </div>
+            ) : (
+              <p>{AIArticle}</p>
+            )}
+          </div>
         </form>
       </div>
     </div>
