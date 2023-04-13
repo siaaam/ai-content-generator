@@ -15,11 +15,11 @@ export default async function handler(req, res) {
         temperature: 0,
         max_tokens: 200,
       });
-      res.status(200).json(response.data);
+      return res.status(200).send(response.data);
     } catch (err) {
       console.log(err);
     }
   } else {
-    res.status(405).json({ message: "Method Not Allowed" });
+    return res.status(405).send("Method not allowed.");
   }
 }

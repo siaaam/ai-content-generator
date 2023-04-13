@@ -5,7 +5,7 @@ import { makeSimplified } from "@/utils/makeSimplifiedText";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import { Dna, Hearts, Vortex } from "react-loader-spinner";
+import { Dna, Hearts, Vortex, Watch } from "react-loader-spinner";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -39,14 +39,15 @@ export default function Home() {
       <div className="my-5 border border-purple-400 p-3 bg-black ">
         {isLoading ? (
           <div className="flex items-center justify-center">
-            <Vortex
-              visible={true}
+            <Watch
               height="80"
               width="80"
-              ariaLabel="vortex-loading"
+              radius="48"
+              color="#A855F7"
+              ariaLabel="watch-loading"
               wrapperStyle={{}}
-              wrapperClass="vortex-wrapper"
-              colors={["red", "green", "blue", "yellow", "orange", "purple"]}
+              wrapperClassName=""
+              visible={true}
             />
           </div>
         ) : (

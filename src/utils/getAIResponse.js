@@ -6,6 +6,7 @@ export async function getData(searchText) {
       searchText,
     });
 
+    console.log(res);
     return res.data;
   } catch (err) {
     console.log(err);
