@@ -7,7 +7,7 @@ const openai = new OpenAIApi(configuration);
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { searchText, shorten } = req.body;
+      const { searchText } = req.body;
       console.log(searchText);
       const response = await openai.createCompletion({
         model: "text-davinci-003",

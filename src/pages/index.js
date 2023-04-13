@@ -1,10 +1,11 @@
 import { getData } from "@/utils/getAIResponse";
 import { makeLonger } from "@/utils/makeLongerText";
 import { makeShorter } from "@/utils/makeShortenText";
+import { makeSimplified } from "@/utils/makeSimplifiedText";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import { Hearts } from "react-loader-spinner";
+import { Dna, Hearts, Vortex } from "react-loader-spinner";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -38,14 +39,14 @@ export default function Home() {
       <div className="my-5 border border-purple-400 p-3 bg-black ">
         {isLoading ? (
           <div className="flex items-center justify-center">
-            <Hearts
+            <Vortex
+              visible={true}
               height="80"
               width="80"
-              color="#a82ec9"
-              ariaLabel="hearts-loading"
+              ariaLabel="vortex-loading"
               wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
+              wrapperClass="vortex-wrapper"
+              colors={["red", "green", "blue", "yellow", "orange", "purple"]}
             />
           </div>
         ) : (
@@ -75,6 +76,12 @@ export default function Home() {
           className="bg-slate-500 hover:bg-slate-400 text-white py-2 px-4 rounded"
         >
           Make it long
+        </button>
+        <button
+          onClick={() => makeSimplified(AIArticle, setResponseStatus, mutate)}
+          className="bg-slate-500 hover:bg-slate-400 text-white py-2 px-4 rounded"
+        >
+          Simplify Language
         </button>
       </div>
     </>
